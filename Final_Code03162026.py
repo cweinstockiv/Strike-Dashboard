@@ -485,5 +485,8 @@ def update_kde_map(relayout,selected_month):
 
     return fig
 
+import os
+
 if __name__ == "__main__":
-    app.run_server(host="0.0.0.0", port=8050)
+    port = int(os.environ.get("PORT", 10000))
+    app.run_server(host="0.0.0.0", port=port)
