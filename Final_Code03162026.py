@@ -11,8 +11,7 @@ CRS_PROJECTED = "EPSG:3035"
 
 # load ACLED data
 
-df = pd.read_csv(
-"https://drive.google.com/uc?export=download&id=1hSx0W2upPuTIB6nMnwv-cmBuS1q2eWg4"
+df = pd.read_csv("https://drive.google.com/uc?export=download&id=1hSx0W2upPuTIB6nMnwv-cmBuS1q2eWg4")
 
 
 # clean data
