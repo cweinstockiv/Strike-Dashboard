@@ -26,7 +26,7 @@ if len(event_date_cols) > 1:
 df = df[df["geo_precision"] == 1]
 df = df[df["time_precision"] == 1]
 
-df["event_date"] = pd.to_datetime(df["event_date"], errors="coerce")
+df["event_date"] = pd.to_datetime(df["event_date"],errors="coerce")
 
 df["Day"] = df["event_date"].dt.day
 df["Month"] = df["event_date"].dt.month
@@ -40,12 +40,12 @@ columns_to_drop = [
     "source","source_scale","fatalities","tags","timestamp"
 ]
 
-df = df.drop(columns=columns_to_drop, errors="ignore")
+df = df.drop(columns=columns_to_drop,errors="ignore")
 
 df["country"] = df["country"].astype(str).str.strip()
 df = df.dropna(subset=["latitude","longitude"])
 
-print(f"✅ Data cleaned. Rows remaining: {len(df)}")
+print(f" Data cleaned.Rows remaining:{len(df)}")
 
 
 # time series
@@ -53,8 +53,8 @@ print(f"✅ Data cleaned. Rows remaining: {len(df)}")
 df_ru = df[df["country"] == "Russia"]
 df_ua = df[df["country"] == "Ukraine"]
 
-weekly_ru = df_ru.resample("W", on="event_date").size()
-weekly_ua = df_ua.resample("W", on="event_date").size()
+weekly_ru = df_ru.resample("W",on="event_date").size()
+weekly_ua = df_ua.resample("W",on="event_date").size()
 
 weekly_df = pd.DataFrame({
     "Russia": weekly_ru,
@@ -64,8 +64,8 @@ weekly_df = pd.DataFrame({
 weekly_df["Russia_4wk_avg"] = weekly_df["Russia"].rolling(4).mean()
 weekly_df["Ukraine_4wk_avg"] = weekly_df["Ukraine"].rolling(4).mean()
 
-monthly_ru = df_ru.resample("ME", on="event_date").size()
-monthly_ua = df_ua.resample("ME", on="event_date").size()
+monthly_ru = df_ru.resample("ME",on="event_date").size()
+monthly_ua = df_ua.resample("ME",on="event_date").size()
 
 monthly_df = pd.DataFrame({
     "Russia": monthly_ru,
@@ -116,7 +116,7 @@ app.layout = html.Div([
 
         # cube tab
 
-        dcc.Tab(label="Space-Time Cube", children=[
+        dcc.Tab(label="Space-Time Cube",children=[
 
             html.Label("Time Aggregation"),
 
@@ -202,7 +202,7 @@ app.layout = html.Div([
 
         # time series tab
 
-        dcc.Tab(label="Time Series", children=[
+        dcc.Tab(label="Time Series",children=[
 
             dcc.Graph(
                 figure=go.Figure([
@@ -261,9 +261,9 @@ app.layout = html.Div([
 def toggle_time_controls(time_agg):
 
     if time_agg == "month":
-        return {"display":"block"}, {"display":"none"}
+        return {"display":"block"},{"display":"none"}
 
-    return {"display":"none"}, {"display":"block"}
+    return {"display":"none"},{"display":"block"}
 
 
 # update cube and map
@@ -352,7 +352,7 @@ def update_cube(country_mode,time_agg,month_range,selected_week,bin_km,clickData
             mode="markers",
 
             customdata=np.stack(
-                (subset["lat"], subset["lon"], subset["count"], subset[time_agg]),
+                (subset["lat"], subset["lon"],subset["count"],subset[time_agg]),
                 axis=-1
             ),
 
@@ -403,7 +403,7 @@ def update_cube(country_mode,time_agg,month_range,selected_week,bin_km,clickData
             mode="markers",
 
             customdata=np.stack(
-                (subset["count"], subset[time_agg]),
+                (subset["count"],subset[time_agg]),
                 axis=-1
             ),
 
@@ -433,9 +433,9 @@ def update_cube(country_mode,time_agg,month_range,selected_week,bin_km,clickData
         mapbox=dict(
             style="carto-darkmatter",
             zoom=4,
-            center=dict(lat=49, lon=34)
+            center=dict(lat=49,lon=34)
         ),
-        margin=dict(l=0, r=0, t=0, b=0)
+        margin=dict(l=0,r=0,t=0,b=0)
     )
 
     return cube_fig,map_fig
@@ -489,4 +489,4 @@ import os
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
-    app.run_server(host="0.0.0.0", port=port)
+    app.run_server(host="0.0.0.0",port=port)
