@@ -431,7 +431,7 @@ def update_cube(country_mode,time_agg,month_range,selected_week,bin_km,clickData
     map_fig.update_layout(
         showlegend=False,
         mapbox=dict(
-            style="carto-darkmatter",
+            style="satellite-streets",
             zoom=4,
             center=dict(lat=49,lon=34)
         ),
