@@ -215,8 +215,8 @@ app.layout = html.Div([
 
             dcc.Graph(
                 figure=go.Figure([
-                    go.Scatter(x=monthly_df.index,y=monthly_df["Russia"],mode="lines+markers",name="Russia"),
-                    go.Scatter(x=monthly_df.index,y=monthly_df["Ukraine"],mode="lines+markers",name="Ukraine")
+                    go.Scatter(x=monthly_df.index,y=monthly_df["Russia"],mode="lines+markers",name="Russia",line=dict(color="red")
+                    go.Scatter(x=monthly_df.index,y=monthly_df["Ukraine"],mode="lines+markers",name="Ukraine",line=dict(color="blue")
                 ]).update_layout(title="Monthly Strike Activity",yaxis_title="Number of Strikes")
             )
 
