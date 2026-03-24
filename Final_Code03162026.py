@@ -431,7 +431,7 @@ def update_cube(country_mode,time_agg,month_range,selected_week,bin_km,clickData
     map_fig.update_layout(
         showlegend=False,
         mapbox=dict(
-            style="satellite-streets",
+            style="satellite",
             zoom=4,
             center=dict(lat=49,lon=34)
         ),
@@ -478,7 +478,7 @@ def update_kde_map(relayout,selected_month):
     )
 
     fig.update_layout(
-        mapbox=dict(style="satellite-streets",center=center,zoom=zoom),
+        mapbox=dict(style="satellite",center=center,zoom=zoom),
         uirevision="constant",
         margin=dict(l=0,r=0,t=0,b=0)
     )
