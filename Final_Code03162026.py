@@ -415,6 +415,7 @@ def update_cube(country_mode,time_agg,month_range,selected_week,bin_km,clickData
                 cmin=0,
                 cmax=max_intensity,
                 showscale=True,
+                line=dict(color="black", width=1.0),
                 colorbar=dict(
                     title=f"{country} Intensity",
                     x=1.02 if country == "Russia" else 1.12
