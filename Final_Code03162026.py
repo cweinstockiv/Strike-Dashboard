@@ -357,14 +357,13 @@ def update_cube(country_mode,time_agg,month_range,selected_week,bin_km,clickData
             ),
 
             marker=dict(
-                size=12,
+                size=8,
                 color=subset["count"],
                 colorscale=colorscale,
                 cmin=0,
                 cmax=max_intensity,
                 showscale=True,
                 opacity=0.95,
-                line=dict(color="black",width=1.0),
                 colorbar=dict(title=f"{country} Intensity",x=colorbar_x)
             ),
 
