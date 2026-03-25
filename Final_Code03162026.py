@@ -479,7 +479,7 @@ def update_kde_map(relayout,selected_month):
     )
 
     fig.update_layout(
-        mapbox=dict(style="open-street-map",center=center,zoom=zoom),
+        mapbox=dict(style="carto-positron",center=center,zoom=zoom),
         uirevision="constant",
         margin=dict(l=0,r=0,t=0,b=0)
     )
