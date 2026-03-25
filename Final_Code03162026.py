@@ -473,7 +473,7 @@ def update_kde_map(relayout,selected_month):
             lat=dataset["latitude"],
             lon=dataset["longitude"],
             radius=radius,
-            colorscale="Cold",
+            colorscale="Hot",
             opacity=0.7
         )
     )
