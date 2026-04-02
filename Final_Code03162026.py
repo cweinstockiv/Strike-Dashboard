@@ -102,7 +102,6 @@ gdf["month"] = gdf["event_date"].dt.to_period("M").astype(str)
 month_labels = sorted(gdf["month"].unique())
 week_labels = sorted(gdf["week"].unique())
 
-
 # dashboard
 
 app = dash.Dash(__name__)
@@ -149,14 +148,28 @@ app.layout = html.Div([
 
             html.Label("Bin Size (km)"),
 
-            dcc.Slider(
-                id="bin_size",
-                min=10,
-                max=100,
-                step=10,
-                value=20,
-                marks={i:f"{i} km" for i in range(10,110,10)}
+            html.Div(
+                dcc.Slider(
+                    id="bin_size",
+                    min=1,
+                    max=80,
+                    step=None,
+                    value=20,
+                    marks={
+                        1: "1 km",
+                        5: "5 km",
+                        10: "10 km",
+                        20: "20 km",
+                        30: "30 km",
+                        40: "40 km",
+                        50: "50 km",
+                        60: "60 km",
+                        70: "70 km",
+                        80: "80 km"
+                }
             ),
+                style={"marginLeft": "30px", "marginRight": "30px"}
+),
 
             html.Br(),
 
